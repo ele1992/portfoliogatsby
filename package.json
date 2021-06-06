@@ -15,8 +15,16 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@notionhq/client": "^0.1.8",
     "gatsby": "^3.6.2",
+    "gatsby-source-notion-api": "^0.8.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.6",
+    "gatsby-plugin-postcss": "^4.6.0",
+    "postcss": "^8.3.0",
+    "tailwindcss": "^2.1.4"
   }
 }
