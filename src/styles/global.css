@@ -7,6 +7,7 @@ html {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
+
 /* 
 .scene {
   border: 1px solid #ccc;
@@ -72,7 +73,8 @@ html {
   height: 100%;
   position: absolute;
   transform-style: preserve-3d;
-  transition: transform 1s;
+  transition: transform 1.5s;
+  transform: translateZ(0px) rotateY(0deg);
 }
 
 .menuCard_Cell {
@@ -84,44 +86,61 @@ html {
   line-height: 116px;
   font-size: 80px;
   font-weight: bold;
-  color: white;
+  color: Red;
   text-align: center;
-  transition: transform 1s, opacity 1s;
+  transition: transform 1.5s, opacity 1s;
 }
 .menuCard_CellOne {
-  transform: translateX(-170px) translateZ(2px) rotateY(-150deg);
+  transform: translateX(-170px) translateZ(2px) rotateY(0deg);
 }
+.menuCard_CellOne_flippedLeft {
+  transform: translateX(-170px) translateZ(2px) rotateY(-160deg);
+}
+
 .menuCard_CellTwo {
   transform: translateX(-170px) translateZ(0px);
 }
 .menuCard_CellThree {
+  transform: translateX(170px) translateZ(1px) rotateY(0deg);
+}
+
+.menuCard_CellThree_flippedRight {
   transform: translateX(170px) translateZ(1px) rotateY(150deg);
 }
 
 .menuCard_CellOne_Half {
   position: absolute;
-  border: 2px solid white;
+  border: 2px solid red;
   left: 340px;
   top: 0px;
   width: 340px;
   height: 780px;
-  background: hsla(0, 100%, 50%, 0.8);
 }
+.menuCard_CellOne_Half_Front {
+  background: yellow;
+  transform: translateZ(6px) rotateY(0deg);
+}
+.menuCard_CellOne_Half_Back {
+  background: blue;
+  z-index: -1;
+  transform: rotateY(180deg);
+}
+
 .menuCard_CellTwo_Half {
   position: absolute;
-  border: 2px solid white;
+  border: 2px solid red;
   left: 340px;
   top: 0px;
   width: 340px;
   height: 780px;
-  background: hsla(40, 100%, 50%, 0.8);
+  background: rgb(255, 255, 255);
 }
 .menuCard_CellThree_Half {
   position: absolute;
-  border: 2px solid white;
+  border: 2px solid red;
   left: 0px;
   top: 0px;
   width: 340px;
   height: 780px;
-  background: hsla(80, 100%, 50%, 0.8);
+  background: rgb(255, 255, 255);
 }

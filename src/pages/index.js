@@ -138,10 +138,12 @@ import "../styles/global.css";
 //   <h2 className="text-2xl font-bold">{children}</h2>
 // );
 
-const Title = ({ children }) => <h1 className="text-2xl p-5">{children}</h1>;
+const Title = ({ children }) => (
+  <h1 className="text-black text-2xl p-5">{children}</h1>
+);
 
 const Text = ({ children, toggleText }) => (
-  <p className="px-5 py-2" onClick={() => toggleText()}>
+  <p className="text-black text-sm p-7 " onClick={() => toggleText()}>
     {children}
   </p>
 );
@@ -149,38 +151,35 @@ const Carousel = ({ children }) => <div>({children})</div>;
 
 const IndexPage = () => {
   const [showText, setShowText] = useState(false);
-  const [showAboutMe, setShowAboutMe] = useState(false);
-  const [showSkills, setShowSkill] = useState(false);
-  const [showProjects, setShowProjects] = useState(false);
+  const [showAboutMe, setShowAboutMe] = useState(true);
+  const [showProjects, setShowProjects] = useState(true);
 
   const toggleText = () => {
     setShowText(!showText);
   };
 
-  const ShowAboutMeOnClick = () => {};
-  const ShowSkillsOnClick = () => {};
-  const ShowProjectsOnClick = () => {};
+  const ShowAboutMeOnClick = () => {
+    console.log(showAboutMe);
+    const timeInMiliseconds = showProjects ? 0 : 900;
+    setShowProjects(true);
+    setTimeout(() => {
+      setShowAboutMe(true);
+    }, timeInMiliseconds);
+  };
+  const ShowSkillsOnClick = () => {
+    const timeInMiliseconds = showAboutMe ? 600 : 0;
+    setShowAboutMe(false);
+    setTimeout(() => {
+      setShowProjects(false);
+    }, timeInMiliseconds);
+  };
+  const ShowProjectsOnClick = () => {
+    setShowAboutMe(false);
+    setShowProjects(true);
+  };
 
   return (
     <div className=" text-white mx-auto p-4 max-w-screen-md flex flex-col">
-      <Title>Yip Au Yeung</Title>
-
-      <Title>About Me</Title>
-      <Text toggleText={toggleText}>
-        Ever since I was born I have been working in the hospitality industry,
-        and although the customer interaction and creativity needed to create
-        food and solve any problem was very satisfying. I knew that I could
-        physically not be doing this my whole life. I made my switch to
-        programming because I loved the idea of building whatever comes to mind.
-        As long as you have an idea everything is possible.
-      </Text>
-      {showText && (
-        <Text toggleText={toggleText}>
-          After finishing my course at Codaisseur I gained experience working
-          with HTML, CSS, Javascript, React, Git, Node.js, and REST API. I am
-          currently interested in UX/UI design.
-        </Text>
-      )}
       {/* <div className="scene">
         <div className="menuCard">
           <div className="menuCard_Cell">1</div>
@@ -190,21 +189,39 @@ const IndexPage = () => {
       </div> */}
       <div className="scene">
         <div className="menuCard">
-          <div className="menuCard_Cell menuCard_CellOne">
-            <div className="menuCard_CellOne_Half"></div>
+          <div
+            className={
+              showAboutMe
+                ? "menuCard_Cell menuCard_CellOne"
+                : "menuCard_Cell menuCard_CellOne_flippedLeft"
+            }
+          >
+            <div className="menuCard_CellOne_Half menuCard_CellOne_Half_Front">
+              Front
+            </div>
+            <div className="menuCard_CellOne_Half menuCard_CellOne_Half_Back">
+              Backface
+            </div>
           </div>
-          <div className="menuCard_Cell menuCard_CellTwo">
+
+          {/* <div className="menuCard_Cell menuCard_CellTwo">
             <div className="menuCard_CellTwo_Half"></div>
           </div>
-          <div className="menuCard_Cell menuCard_CellThree">
+          <div
+            className={
+              showProjects
+                ? "menuCard_Cell menuCard_CellThree"
+                : "menuCard_Cell menuCard_CellThree_flippedRight"
+            }
+          >
             <div className="menuCard_CellThree_Half"></div>
-          </div>
+          </div> */}
         </div>
       </div>
 
-      <button onClick={() => ShowAboutMeOnClick}>About Me</button>
-      <button onClick={() => ShowSkillsOnClick}>Skills</button>
-      <button onClick={() => ShowProjectsOnClick}>Projects</button>
+      <button onClick={() => ShowAboutMeOnClick()}>About Me</button>
+      <button onClick={() => ShowSkillsOnClick()}>Skills</button>
+      <button onClick={() => ShowProjectsOnClick()}>Projects</button>
       <Title>Projects</Title>
       <Title>Links</Title>
     </div>
