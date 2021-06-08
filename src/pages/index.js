@@ -159,12 +159,12 @@ const IndexPage = () => {
   };
 
   const ShowAboutMeOnClick = () => {
-    console.log(showAboutMe);
-    const timeInMiliseconds = showProjects ? 0 : 900;
-    setShowProjects(true);
-    setTimeout(() => {
-      setShowAboutMe(true);
-    }, timeInMiliseconds);
+    // const timeInMiliseconds = showProjects ? 0 : 900;
+    // setShowProjects(true);
+    // setTimeout(() => {
+    //   setShowAboutMe(true);
+    // }, timeInMiliseconds);
+    setShowAboutMe(!showAboutMe);
   };
   const ShowSkillsOnClick = () => {
     const timeInMiliseconds = showAboutMe ? 600 : 0;
@@ -196,9 +196,9 @@ const IndexPage = () => {
                 : "menuCard_Cell menuCard_CellOne_flippedLeft"
             }
           >
-            <div className="menuCard_CellOne_Half menuCard_CellOne_Half_Front">
+            {/* <div className="menuCard_CellOne_Half menuCard_CellOne_Half_Front">
               Front
-            </div>
+            </div> */}
             <div className="menuCard_CellOne_Half menuCard_CellOne_Half_Back">
               Backface
             </div>

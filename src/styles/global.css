@@ -89,6 +89,7 @@ html {
   color: Red;
   text-align: center;
   transition: transform 1.5s, opacity 1s;
+  backface-visibility: hidden;
 }
 .menuCard_CellOne {
   transform: translateX(-170px) translateZ(2px) rotateY(0deg);
@@ -118,12 +119,10 @@ html {
 }
 .menuCard_CellOne_Half_Front {
   background: yellow;
-  transform: translateZ(6px) rotateY(0deg);
 }
 .menuCard_CellOne_Half_Back {
   background: blue;
-  z-index: -1;
-  transform: rotateY(180deg);
+  transform: rotateY(0deg);
 }
 
 .menuCard_CellTwo_Half {
