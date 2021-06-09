@@ -8,67 +8,16 @@ html {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-/* 
 .scene {
-  border: 1px solid #ccc;
   margin: 40px 0;
   position: relative;
-  width: 350px;
-  height: 800px;
+  width: 400px;
+  height: 1000px;
   margin: 80px auto;
   perspective: 1000px;
 }
 
-.menuCard {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transform-style: preserve-3d;
-  transition: transform 1s;
-}
-
-.menuCard_Cell {
-  position: absolute;
-  width: 340px;
-  height: 780px;
-  left: 10px;
-  top: 10px;
-  border: 2px solid white;
-  line-height: 116px;
-  font-size: 80px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  transition: transform 1s, opacity 1s;
-}
-
-
-.menuCard_Cell:nth-child(1) {
-  background: hsla(0, 100%, 50%, 0.8);
-  transform: translateZ(2px) translateX(0px) rotateY(0deg);
-  transform: translateZ(85px) translateX(-320px) rotateY(-150deg);
-}
-.menuCard_Cell:nth-child(2) {
-  background: hsla(40, 100%, 50%, 0.8);
-  transform: rotateY(0deg) translateZ(0px);
-}
-.menuCard_Cell:nth-child(3) {
-  background: hsla(80, 100%, 50%, 0.8);
-  transform: translateZ(1px) translateX(0px) rotateY(0deg);
-  transform: translateZ(85px) translateX(320px) rotateY(150deg);
-} */
-
-.scene {
-  border: 1px solid #ccc;
-  margin: 40px 0;
-  position: relative;
-  width: 700px;
-  height: 800px;
-  margin: 80px auto;
-  perspective: 1000px;
-}
-
-.menuCard {
+.menu {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -77,69 +26,53 @@ html {
   transform: translateZ(0px) rotateY(0deg);
 }
 
-.menuCard_Cell {
+.menu.is-flipped {
+  transform: translateZ(250px) rotateY(180deg);
+}
+
+.menu-card {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
   position: absolute;
-  width: 680px;
-  height: 780px;
-  left: 10px;
-  top: 10px;
-  line-height: 116px;
-  font-size: 80px;
-  font-weight: bold;
-  color: Red;
+}
+
+.menu-card.is-left {
+  transform-origin: 0% 0%;
+}
+
+.menu-card.is-right {
+  transform-origin: 100% 0%;
+}
+
+.menu-card.is-flipped {
+  transform: rotateY(-120deg);
+}
+
+.menu-card.is-flipped.is-right {
+  transform: rotateY(120deg);
+}
+
+.menu-card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 260px;
+  color: red;
   text-align: center;
-  transition: transform 1.5s, opacity 1s;
+  font-weight: bold;
+  font-size: 40px;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-}
-.menuCard_CellOne {
-  transform: translateX(-170px) translateZ(2px) rotateY(0deg);
-}
-.menuCard_CellOne_flippedLeft {
-  transform: translateX(-170px) translateZ(2px) rotateY(-160deg);
+  background: white;
+  border: solid 3px red;
 }
 
-.menuCard_CellTwo {
-  transform: translateX(-170px) translateZ(0px);
-}
-.menuCard_CellThree {
-  transform: translateX(170px) translateZ(1px) rotateY(0deg);
+.menu-card-face-front {
 }
 
-.menuCard_CellThree_flippedRight {
-  transform: translateX(170px) translateZ(1px) rotateY(150deg);
-}
-
-.menuCard_CellOne_Half {
-  position: absolute;
-  border: 2px solid red;
-  left: 340px;
-  top: 0px;
-  width: 340px;
-  height: 780px;
-}
-.menuCard_CellOne_Half_Front {
-  background: yellow;
-}
-.menuCard_CellOne_Half_Back {
-  background: blue;
-  transform: rotateY(0deg);
-}
-
-.menuCard_CellTwo_Half {
-  position: absolute;
-  border: 2px solid red;
-  left: 340px;
-  top: 0px;
-  width: 340px;
-  height: 780px;
-  background: rgb(255, 255, 255);
-}
-.menuCard_CellThree_Half {
-  position: absolute;
-  border: 2px solid red;
-  left: 0px;
-  top: 0px;
-  width: 340px;
-  height: 780px;
-  background: rgb(255, 255, 255);
+.menu-card-face-back {
+  transform: rotateY(180deg);
 }

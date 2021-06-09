@@ -153,18 +153,19 @@ const IndexPage = () => {
   const [showText, setShowText] = useState(false);
   const [showAboutMe, setShowAboutMe] = useState(true);
   const [showProjects, setShowProjects] = useState(true);
+  const [showContacts, setShowContacts] = useState(false);
 
   const toggleText = () => {
     setShowText(!showText);
   };
 
   const ShowAboutMeOnClick = () => {
-    // const timeInMiliseconds = showProjects ? 0 : 900;
-    // setShowProjects(true);
-    // setTimeout(() => {
-    //   setShowAboutMe(true);
-    // }, timeInMiliseconds);
-    setShowAboutMe(!showAboutMe);
+    const timeInMiliseconds = showProjects ? 0 : 900;
+    setShowProjects(true);
+    setTimeout(() => {
+      setShowAboutMe(true);
+    }, timeInMiliseconds);
+    // setShowAboutMe(!showAboutMe);
   };
   const ShowSkillsOnClick = () => {
     const timeInMiliseconds = showAboutMe ? 600 : 0;
@@ -178,33 +179,62 @@ const IndexPage = () => {
     setShowProjects(true);
   };
 
-  return (
-    <div className=" text-white mx-auto p-4 max-w-screen-md flex flex-col">
-      {/* <div className="scene">
-        <div className="menuCard">
-          <div className="menuCard_Cell">1</div>
-          <div className="menuCard_Cell">2</div>
-          <div className="menuCard_Cell">3</div>
-        </div>
-      </div> */}
-      <div className="scene">
-        <div className="menuCard">
-          <div
-            className={
-              showAboutMe
-                ? "menuCard_Cell menuCard_CellOne"
-                : "menuCard_Cell menuCard_CellOne_flippedLeft"
-            }
-          >
-            {/* <div className="menuCard_CellOne_Half menuCard_CellOne_Half_Front">
-              Front
-            </div> */}
-            <div className="menuCard_CellOne_Half menuCard_CellOne_Half_Back">
-              Backface
-            </div>
-          </div>
+  const ShowContactsOnClick = () => {
+    setShowContacts(!showContacts);
+  };
 
-          {/* <div className="menuCard_Cell menuCard_CellTwo">
+  return (
+    <div>
+      <header className="fixed top-0 left-0 right-0">
+        <nav className="flex text-white">
+          <button onClick={() => ShowAboutMeOnClick()}>About Me</button>
+          <button onClick={() => ShowSkillsOnClick()}>Skills</button>
+          <button onClick={() => ShowProjectsOnClick()}>Projects</button>
+          <button onClick={() => ShowContactsOnClick()}>Flip Menu</button>
+        </nav>
+      </header>
+      <div className=" text-white mx-auto p-4 max-w-screen-md flex flex-col">
+        <div className="scene">
+          <div className={showContacts ? "menu is-flipped" : "menu"}>
+            <div className="menu-card">
+              <div className="menu-card-face menu-card-face-back">
+                Backface-skills
+              </div>
+              <div className="menu-card-face menu-card-face-front">
+                Front-skills
+              </div>
+            </div>
+            <div
+              className={
+                showProjects
+                  ? "menu-card is-right "
+                  : "menu-card is-right is-flipped"
+              }
+            >
+              <div className="menu-card-face menu-card-face-back">
+                Backface-projects
+              </div>
+              <div className="menu-card-face menu-card-face-front">
+                Front-projects
+              </div>
+            </div>
+            <div
+              className={
+                showAboutMe
+                  ? "menu-card is-left "
+                  : "menu-card is-left is-flipped"
+              }
+            >
+              <div className="menu-card-face menu-card-face-back">
+                Backface-about
+              </div>
+              <div className="menu-card-face menu-card-face-front">
+                Front-about
+              </div>
+            </div>
+
+            {/* 
+          <div className="menuCard_Cell menuCard_CellTwo">
             <div className="menuCard_CellTwo_Half"></div>
           </div>
           <div
@@ -216,14 +246,9 @@ const IndexPage = () => {
           >
             <div className="menuCard_CellThree_Half"></div>
           </div> */}
+          </div>
         </div>
       </div>
-
-      <button onClick={() => ShowAboutMeOnClick()}>About Me</button>
-      <button onClick={() => ShowSkillsOnClick()}>Skills</button>
-      <button onClick={() => ShowProjectsOnClick()}>Projects</button>
-      <Title>Projects</Title>
-      <Title>Links</Title>
     </div>
   );
 };
