@@ -11,10 +11,16 @@ html {
 .scene {
   margin: 40px 0;
   position: relative;
-  width: 400px;
+  width: 500px;
   height: 1000px;
   margin: 80px auto;
-  perspective: 1000px;
+  perspective: 7500px;
+}
+
+.logo {
+  max-height: 78vh;
+  transform-style: preserve-3d;
+  transform: translateZ(5rem);
 }
 
 .menu {
@@ -37,6 +43,16 @@ html {
   transform-style: preserve-3d;
   cursor: pointer;
   position: absolute;
+}
+
+.menu-card:nth-child(1) {
+  transform: translateZ(1px);
+}
+.menu-card:nth-child(2) {
+  transform: translateZ(2px);
+}
+.menu-card:nth-child(3) {
+  transform: translateZ(3px);
 }
 
 .menu-card.is-left {
@@ -67,12 +83,57 @@ html {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   background: white;
-  border: solid 3px red;
+  transform-style: preserve-3d;
 }
-
-.menu-card-face-front {
+.menu-card-face::before {
+  content: "";
+  position: absolute;
+  --spacer: 1em;
+  top: var(--spacer);
+  bottom: var(--spacer);
+  left: var(--spacer);
+  right: var(--spacer);
+  border: 3px solid currentColor;
+  transform: translateZ(3rem);
 }
 
 .menu-card-face-back {
   transform: rotateY(180deg);
+}
+.menu-card-face-front {
+}
+
+.link-icon {
+  font-size: 40;
+  transform: translateZ(100px);
+  box-shadow: 1px 5px 5px red;
+}
+.link-icon:hover {
+}
+.nav-button {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 0.25rem;
+  position: relative;
+}
+.nav-button:hover {
+  background-color: black;
+  color: red;
+}
+
+.nav-button::after {
+  position: absolute;
+  top: 100%;
+  left: 2%;
+  width: 0;
+  height: 2px;
+  background: red;
+  display: block;
+  content: "";
+  transition: width 0.5s ease-in-out;
+}
+.nav-button:hover:after {
+  width: 98%;
 }
